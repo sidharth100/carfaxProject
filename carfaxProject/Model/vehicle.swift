@@ -18,14 +18,22 @@ struct listing: Codable {
     var year : Int
     var make : String
     var model : String
+    var vin : String
+    
     var trim : String
     var listPrice : Double
     var mileage : Int
-    var images: Image
+    var images: Imagess
 }
 
-struct Image: Codable {
-    var large: [URL]
+struct Imagess: Codable {
+    var firstPhoto: firstPic
+}
+
+struct firstPic: Codable {
+    var large: URL
+    var medium: URL
+    var small: URL
 }
 
 struct Dealers: Codable {

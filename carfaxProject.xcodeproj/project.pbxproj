@@ -66,11 +66,11 @@
 				5BD3DC6F27727F6700ABCD07 /* AppDelegate.swift */,
 				5BD3DC7127727F6700ABCD07 /* SceneDelegate.swift */,
 				5BD3DC7327727F6700ABCD07 /* ViewController.swift */,
+				5BD3DC832772946700ABCD07 /* CarsViewCell.swift */,
 				5BD3DC7527727F6700ABCD07 /* Main.storyboard */,
 				5BD3DC7827727F6A00ABCD07 /* Assets.xcassets */,
 				5BD3DC7A27727F6A00ABCD07 /* LaunchScreen.storyboard */,
 				5BD3DC7D27727F6A00ABCD07 /* Info.plist */,
-				5BD3DC832772946700ABCD07 /* CarsViewCell.swift */,
 			);
 			path = carfaxProject;
 			sourceTree = "<group>";

@@ -16,9 +16,7 @@ class DataLoader {
         guard let url = URL(string: vehicleUrl) else { return }
         
         // Creating URL Session
-       
-     
-        
+
         dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             // Handling error
             if let error = error {
@@ -44,11 +42,12 @@ class DataLoader {
                 // Parse the data
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(assignment.self, from: data)
-              //  self.vehicle = jsonData
                 
+                DispatchQueue.main.async {
+                    
                     completion(.success(jsonData))
                     
-                    
+                }
                 
                 
             } catch let error {
