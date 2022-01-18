@@ -9,9 +9,11 @@ import Foundation
 
 class DataLoader {
     
+      static let sharedInstance = DataLoader()
+    
     private var dataTask: URLSessionDataTask?
     
-    func getUsedCars(completion: @escaping (Result<assignment, Error>) -> Void){
+    func getUsedCars(completion: @escaping (assignment?) -> Void){
         let vehicleUrl = "https://carfax-for-consumers.firebaseio.com/assignment.json"
         guard let url = URL(string: vehicleUrl) else { return }
         
@@ -20,7 +22,7 @@ class DataLoader {
         dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             // Handling error
             if let error = error {
-                completion(.failure(error))
+                
                 print("DataTask Error: \(error.localizedDescription)")
                 return
             }
@@ -45,13 +47,13 @@ class DataLoader {
                 
                 DispatchQueue.main.async {
                     
-                    completion(.success(jsonData))
+                    completion(jsonData)
                     
                 }
                 
                 
             } catch let error {
-                completion(.failure(error))
+              print(error)
             }
         })
         

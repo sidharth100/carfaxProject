@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CarsViewCell: UITableViewCell {
+   
 
     // MARK:- Properties
     
@@ -21,32 +23,26 @@ class CarsViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+      
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
     }
 
 // MARK:- Getting Values from ViewController
     
-    func getValues(model: String, make: String, trim: String, year: Int, price: Double, mil: Int, city: String, state: String, phone: String, photoUrl: URL, sphoto: URL , mphoto: URL) {
-        
-        var image: UIImage? = nil
-           do {
-               let data = try Data(contentsOf: photoUrl, options: [])
+   
+    func getValues(values: listing){
 
-               image = UIImage(data: data)
-           }
-           catch {
-                image = UIImage(named: "arrow.triangle.2.circlepath.camera")
-           }
-
-        self.imgLabel.image = image
+        let source = ImageResource(downloadURL: values.images.firstPhoto.large)
+        imgLabel.kf.setImage(with: source)
         
-        self.phonenum = phone
-        yearNameLabel.text = "\(year)  \(make)  \(model)  \(trim)"
-        milLocLabel.text = "\(mil)  \(city), \(state)"
-        priceLabel.text = "$\(String(price))"
+        phonenum = values.dealer.phone
+        yearNameLabel.text = "\(values.year)  \(values.make)  \(values.model)  \(values.trim)"
+        milLocLabel.text = "\(values.mileage) Mi |  \(values.dealer.city), \(values.dealer.state)"
+        priceLabel.text = "$\(String(values.listPrice))"
         
     }
     
